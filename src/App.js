@@ -12,6 +12,9 @@ function updateState(state, action) {
   }
 }
 
+const incrementAction = { type: 'INCREMENT', amount: 1 };
+const decrementAction = { type: 'DECREMENT', amount: 1 };
+
 export default class Counter extends Component {
   constructor(props) {
     super(props);
