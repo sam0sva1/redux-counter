@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Store from './store';
 
+count initialState = { count: 0 };
+
 export default class Counter extends Component {
   constructor(props) {
     super(props);
@@ -11,11 +13,11 @@ export default class Counter extends Component {
   }
 
   increment() {
-    this.setState({ count: this.state.count + 1 });
+    
   }
 
   decrement() {
-    this.setState({ count: this.state.count - 1 });
+
   }
 
   render() {
