@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Store from './store';
 
-count initialState = { count: 0 };
+const initialState = { count: 0 };
 
 function updateState(state, action) {
   switch (action.type) {
@@ -15,6 +15,8 @@ function updateState(state, action) {
 const incrementAction = { type: 'INCREMENT', amount: 1 };
 const decrementAction = { type: 'DECREMENT', amount: 1 };
 
+const store = new Store(updateState, initialState);
+
 export default class Counter extends Component {
   constructor(props) {
     super(props);
@@ -23,18 +25,22 @@ export default class Counter extends Component {
     this.decrement = this.decrement.bind(this);
   }
 
-  increment() {
+  componentDidMount() {
+    store.subscribe(() => this.forceUpdate());
+  }
 
+  increment() {
+    store.update(incrementAction);
   }
 
   decrement() {
-
+    store.update(decrementAction);
   }
 
   render() {
     return (
       <div className="counter">
-        <span className="counter__count">{this.state.count}</span>
+        <span className="counter__count">{store.state.count}</span>
 
         <div className="buttons">
           <button className="buttons__decrement" onClick={this.decrement}>-</button>
