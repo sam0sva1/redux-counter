@@ -4,7 +4,7 @@ import { createStore } from './redux';
 
 const initialState = { count: 0 };
 
-function reducer(state, action) {
+function reducer(state = { count: 0 }, action) {
   switch (action.type) {
     case 'INCREMENT': return { count: state.count + action.amount };
     case 'DECREMENT': return { count: state.count - action.amount };
