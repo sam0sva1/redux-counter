@@ -4,6 +4,14 @@ import Store from './store';
 
 count initialState = { count: 0 };
 
+function updateState(state, action) {
+  switch (action.type) {
+    case 'INCREMENT': return { count: state.count + action.amount };
+    case 'DECREMENT': return { count: state.count - action.amount };
+    default: return state;
+  }
+}
+
 export default class Counter extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +21,7 @@ export default class Counter extends Component {
   }
 
   increment() {
-    
+
   }
 
   decrement() {
