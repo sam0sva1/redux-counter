@@ -13,9 +13,17 @@ function reducer(state = { count: 0 }, action) {
   }
 }
 
-const incrementAction = { type: 'INCREMENT', amount: 1 };
-const decrementAction = { type: 'DECREMENT', amount: 1 };
-const resetAction = { type: 'RESET' };
+function increment(amount) {
+  return { type: 'INCREMENT', amount };
+}
+
+function decrement(amount) {
+  return { type: 'DECREMENT', amount };
+}
+
+function reset() {
+  return { type: 'RESET' };
+}
 
 const store = createStore(reducer, initialState);
 
@@ -33,17 +41,17 @@ export default class Counter extends Component {
   }
 
   increment() {
-    let amount = this.refs.amount.value;
-    store.dispatch(incrementAction);
+    let amount = parseInt(this.refs.amount.value || 1, 10);
+    store.dispatch(increment(amount));
   }
 
   decrement() {
-    let amount = this.refs.amount.value;
-    store.dispatch(decrementAction);
+    let amount = parseInt(this.refs.amount.value || 1, 10);
+    store.dispatch(decrement(amount));
   }
 
   reset() {
-    store.dispatch(resetAction);
+    store.dispatch(reset());
   }
 
   render() {
