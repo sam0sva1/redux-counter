@@ -33,10 +33,12 @@ export default class Counter extends Component {
   }
 
   increment() {
+    let amount = this.refs.amount.value;
     store.dispatch(incrementAction);
   }
 
   decrement() {
+    let amount = this.refs.amount.value;
     store.dispatch(decrementAction);
   }
 
@@ -55,6 +57,8 @@ export default class Counter extends Component {
           <button className="buttons__reset" onClick={this.reset}>R</button>
           <button className="buttons__increment" onClick={this.increment}>+</button>
         </div>
+
+        <input type="text" ref="amount" defaultValue="1" />
       </div>
     )
   }
